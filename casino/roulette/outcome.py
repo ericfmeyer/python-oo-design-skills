@@ -19,6 +19,7 @@ class Outcome(object):
             the winning bin.
         - Bet is placed on an outcome.
     """
+
     def __init__(self, name, odds):
         """Initialize the Outcome instance with given name and odds.
 

@@ -1,9 +1,11 @@
 import unittest
+
 from casino.roulette.outcome import Outcome
 
 
 class TestOutcome(unittest.TestCase):
     """Tests the implementation of the class Outcome."""
+
     def setUp(self):
         self.oc1 = Outcome("Red", 1)
         self.oc2 = Outcome("Red", 1)
