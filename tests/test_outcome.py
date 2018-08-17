@@ -3,7 +3,7 @@ import unittest
 from casino.roulette.outcome import Outcome
 
 
-class TestOutcome(unittest.TestCase):
+class OutcomeTest(unittest.TestCase):
     """Test the implementation of the class Outcome."""
 
     def setUp(self):
