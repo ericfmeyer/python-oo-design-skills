@@ -11,13 +11,13 @@ class Outcome(object):
     An outcome is composed of a name and odds.
     It is responsible for calculating the payout amount.
 
-    Used by:
-        - Wheel collects outcomes into bins.
-        - Table holds bets on outcomes.
-        - Player places bets on outcomes.
-        - Game collects wins and losses based on the outcomes contained in
+    Collaborators:
+        - Wheel: collects outcomes into bins.
+        - Table: holds bets on outcomes.
+        - Player: places bets on outcomes.
+        - Game: collects wins and losses based on the outcomes contained in
             the winning bin.
-        - Bet is placed on an outcome.
+        - Bet: is placed on an outcome.
     """
 
     def __init__(self, name, odds):
