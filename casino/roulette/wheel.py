@@ -12,7 +12,7 @@ class Wheel(object):
 
     Collaborators:
         - Game: spins the wheel.
-        - Bin: wheel picks a bin that wins.
+        - Bin: wheel has 38 bins and picks a winning bin.
         - Outcome: wheel selects the outcomes that win.
     """
 

@@ -18,6 +18,7 @@ class Outcome(object):
         - Game: collects wins and losses based on the outcomes contained in
             the winning bin.
         - Bet: is placed on an outcome.
+        - Bin: contains a collection of outcomes.
     """
 
     def __init__(self, name, odds):
