@@ -32,6 +32,10 @@ class TestOutcome(unittest.TestCase):
         self.assertEqual(self.oc1.__repr__(), "Outcome('Red', 1)")
         self.assertEqual(self.oc3.__repr__(), "Outcome('Split 1-2', 17)")
 
+    def test_win_amount_returns_correct_value(self):
+        self.assertEqual(self.oc1.win_amount(13), 13)
+        self.assertEqual(self.oc3.win_amount(5), 85)
+
 
 if __name__ == '__main__':
     unittest.main()

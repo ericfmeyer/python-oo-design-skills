@@ -20,49 +20,57 @@ class Outcome(object):
         - Bet is placed on an outcome.
     """
     def __init__(self, name, odds):
-        """Initializes the Outcome instance with given name and odds.
+        """Initialize the Outcome instance with given name and odds.
 
-        :param name (str): name of the outcome (e.g. "Split 1-2").
-        :param odds (:obj:`int`): odds of the outcome (e.g. 17)
+        :param name: (str) name of the outcome (e.g. "Split 1-2").
+        :param odds: (int) odds of the outcome (e.g. 17)
                 Note: the denominator is assumed to be 1 (e.g. 17:1)
         """
         self.name = name
         self.odds = odds
 
-    def __eq__(self, other):
-        """Compares the name attributes of self and other.
+    def win_amount(self, amount):
+        """Return the amount multiplied by this Outcome odds.
 
-        :param other (Outcome): other Outcome to compare against.
-        :return (boolean): returns True if the names match.
+        :param amount: (int) the amount being bet
+        :return: (int) the amount won
+        """
+        return amount * self.odds
+
+    def __eq__(self, other):
+        """Compare the name attributes of self and other.
+
+        :param other: (Outcome) other Outcome to compare against.
+        :return: (boolean) returns True if the names match.
         """
         return self.name == other.name
 
     def __ne__(self, other):
-        """Compares the name attributes of self and other.
+        """Compare the name attributes of self and other.
 
-        :param other (Outcome): other Outcome to compare against.
-        :return (boolean): returns True if the names do not match.
+        :param other: (Outcome) other Outcome to compare against.
+        :return: (boolean) returns True if the names do not match.
         """
         return self.name != other.name
 
     def __hash__(self):
         """Hash value for this Outcome.
 
-        :return (int): the hash value of the name of this Outcome.
+        :return: (int) the hash value of the name of this Outcome.
         """
         return hash(self.name)
 
     def __str__(self):
         """Easy to read string representation of this Outcome.
 
-        :return (str): string of the form "name (odds:1)".
+        :return: (str) string of the form "name (odds:1)".
         """
         return "{name:s} ({odds:d}:1)".format_map(vars(self))
 
     def __repr__(self):
         """Detailed representation of this Outcome object.
 
-        :return (str): string of the form "Outcome ('name', odds)".
+        :return: (str) string of the form "Outcome ('name', odds)".
         """
         return "{class_:s}({name!r}, {odds!r})".format(
             class_=type(self).__name__, **vars(self))
