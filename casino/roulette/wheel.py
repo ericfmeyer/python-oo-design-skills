@@ -41,7 +41,7 @@ class Wheel(object):
         """
         return self.rng.choice(self.bins)
 
-    def get(self, n):
+    def get_bin(self, n):
         """Return the given Bin from the collection.
 
         :param n: (int) bin number - 0-37 inclusive.

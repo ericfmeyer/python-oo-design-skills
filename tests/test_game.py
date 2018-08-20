@@ -1,13 +1,13 @@
 import unittest
 
-from casino.roulette.game import Game
+from casino.roulette.game import RouletteGame
 
 
 class GameTest(unittest.TestCase):
     """Test the implementation of the class Game."""
 
     def setUp(self):
-        self.game = Game()
+        self.game = RouletteGame()
 
     def test_can_create_game(self):
         self.assertIsNotNone(self.game)

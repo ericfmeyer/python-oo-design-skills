@@ -26,11 +26,11 @@ class WheelTest(unittest.TestCase):
         self.assertIsInstance(self.test_wheel.bins[0], Bin)
 
     def test_get_returns_correct_bin(self):
-        self.assertEqual(self.test_wheel.get(1), self.test_wheel.bins[1])
+        self.assertEqual(self.test_wheel.get_bin(1), self.test_wheel.bins[1])
 
     def test_can_add_outcomes_to_wheel_bins(self):
         self.test_wheel.add_outcome(1, self.oc1)
-        self.assertTrue(self.oc1 in self.test_wheel.get(1))
+        self.assertTrue(self.oc1 in self.test_wheel.get_bin(1))
 
     def test_wheel_returns_expected_bins(self):
         self.assertTrue(self.test_wheel.next() == self.test_wheel.bins[8])
