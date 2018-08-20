@@ -23,10 +23,14 @@ class BinBuilder(object):
     @classmethod
     def build_straight_bets(cls, wheel):
         for n in range(0, 37):
-            wheel.add_outcome(n, Outcome('{} {}'.format(RoG.straight_bet_name, n), RoG.straight_bet_odds))
+            wheel.add_outcome(n, Outcome(
+                '{} {}'.format(RoG.straight_bet_name, n),
+                RoG.straight_bet_odds))
 
         # special case for double zero, at index 37
-        wheel.add_outcome(37, Outcome('{} {}'.format(RoG.straight_bet_name, '00'), RoG.straight_bet_odds))
+        wheel.add_outcome(37, Outcome(
+            '{} {}'.format(RoG.straight_bet_name, '00'),
+            RoG.straight_bet_odds))
 
     def build_split_bets(self, wheel):
         pass

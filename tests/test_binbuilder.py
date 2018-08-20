@@ -26,14 +26,18 @@ class BinBuilderTest(unittest.TestCase):
         self.bin_builder.build_straight_bets(self.wheel)
         for bin_number in range(0, 37):
             actual_bin = self.wheel.get_bin(bin_number)
-            expected = Outcome('{} {}'.format(RoG.straight_bet_name, bin_number), RoG.five_bet_odds)
+            expected = Outcome(
+                '{} {}'.format(RoG.straight_bet_name, bin_number),
+                RoG.five_bet_odds)
             self.assertTrue(expected in actual_bin)
 
     def test_builder_generates_straight_bets_for_double_zero(self):
         self.bin_builder.build_straight_bets(self.wheel)
         bin_number = 37
         actual_bin = self.wheel.get_bin(bin_number)
-        expected = Outcome('{} {}'.format(RoG.straight_bet_name, '00'), RoG.five_bet_odds)
+        expected = Outcome(
+            '{} {}'.format(RoG.straight_bet_name, '00'),
+            RoG.five_bet_odds)
         self.assertTrue(expected in actual_bin)
 
 
