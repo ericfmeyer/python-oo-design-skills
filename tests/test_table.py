@@ -5,6 +5,7 @@ from casino.roulette.table import Table
 
 class TableTest(unittest.TestCase):
     """Test the implementation of the class Table."""
+
     def setUp(self):
         self.table = Table()
 

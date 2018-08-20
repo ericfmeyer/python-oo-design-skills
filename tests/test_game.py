@@ -5,6 +5,7 @@ from casino.roulette.game import Game
 
 class GameTest(unittest.TestCase):
     """Test the implementation of the class Game."""
+
     def setUp(self):
         self.game = Game()
 
