@@ -5,7 +5,7 @@ Implements the Bin class.
 """
 
 
-class Bin(frozenset):
+class Bin(set):
     """Immutable collection of outcomes.
 
     Collaborators:

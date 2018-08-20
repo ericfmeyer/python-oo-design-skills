@@ -32,7 +32,7 @@ class Wheel(object):
         :param outcome: (Outcome) outcome to add.
         :return:
         """
-        self.bins[number].add
+        self.bins[number].add(outcome)
 
     def next(self):
         """Return a bin at random.
