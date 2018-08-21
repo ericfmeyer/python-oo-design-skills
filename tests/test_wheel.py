@@ -35,8 +35,29 @@ class WheelTest(unittest.TestCase):
     def test_zero_bin_outcomes(self):
         outcomes = [Outcome("Five 00-0-1-2-3", 8),
                     Outcome("Number 0", 35)]
+        actual_bin = self.test_wheel.get_bin(0)
         for exp in outcomes:
-            self.assertTrue(exp in self.test_wheel.get_bin(0))
+            self.assertTrue(exp in actual_bin,
+                            '{} not in {}'.format(exp, actual_bin))
+
+    def test_bin_one_outcomes(self):
+        outcomes = [
+            Outcome("Number 1", 35),
+            Outcome("Red", 1),
+            Outcome("Odd", 1),
+            Outcome("Low", 1),
+            Outcome("Column 1", 1),
+            Outcome("Dozen 1", 2),
+            Outcome("Split 1-2", 17),
+            Outcome("Street 1-2-3", 8),
+            Outcome("Corner 1-2-4-5", 5),
+            Outcome("Five 00-0-1-2-3", 3),
+            Outcome("Line 1-2-3-4-5-6", 7)
+        ]
+        actual_bin = self.test_wheel.get_bin(1)
+        for exp in outcomes:
+            self.assertTrue(exp in actual_bin,
+                            '{} not in {}'.format(exp, actual_bin))
 
 
 if __name__ == '__main__':

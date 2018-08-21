@@ -51,15 +51,21 @@ class BinBuilderTest(unittest.TestCase):
                         '{} is not in {}'.format(expected, actual_bin))
 
     def test_five_bets_for_dbl_zero(self):
-
         actual_bin = self.wheel.get_bin(self.dbl_zero_bin)
         expected = Outcome(self.five_bet_name, self.five_bet_odds)
         self.assertTrue(expected in actual_bin,
                         '{} is not in {}'.format(expected, actual_bin))
 
+    def test_five_bets_for_one_two_three(self):
+        expected = Outcome(self.five_bet_name, self.five_bet_odds)
+        for i in range(1, 4):
+            actual_bin = self.wheel.get_bin(i)
+            self.assertTrue(expected in actual_bin,
+                            '{} is not in {}'.format(expected, actual_bin))
+
     def test_no_other_five_bets(self):
         five_bet = Outcome(self.five_bet_name, self.five_bet_odds)
-        for i in range(1, self.dbl_zero_bin):
+        for i in range(4, self.dbl_zero_bin):
             actual_bin = self.wheel.get_bin(i)
             self.assertTrue(five_bet not in actual_bin,
                             '{} is in {}'.format(five_bet, actual_bin))
@@ -182,6 +188,28 @@ class BinBuilderTest(unittest.TestCase):
                 actual_bin = self.wheel.get_bin(bin_number)
                 self.assertTrue(exp in actual_bin,
                                 '{} is not in {}'.format(exp, actual_bin))
+
+    # column bets
+    def test_all_column_bets(self):
+        for col in range(0, 3):
+            exp = Outcome('{} {}'.format(self.column_bet_name, col + 1),
+                          self.dozen_bet_odds)
+            for row in range(0, 12):
+                bin_number = 3 * row + col + 1
+                actual_bin = self.wheel.get_bin(bin_number)
+                self.assertTrue(exp in actual_bin,
+                                '{} is not in {}'.format(exp, actual_bin))
+
+    # even money bets
+    def test_some_red_bets(self):
+        red = Outcome(self.red_bet_name, self.even_money_bet_odds)
+        self.assertTrue(red in self.wheel.get_bin(9))
+        self.assertTrue(red in self.wheel.get_bin(18))
+
+    def test_some_black_bets(self):
+        black = Outcome(self.black_bet_name, self.even_money_bet_odds)
+        self.assertTrue(black in self.wheel.get_bin(6))
+        self.assertTrue(black in self.wheel.get_bin(31))
 
 
 if __name__ == '__main__':
