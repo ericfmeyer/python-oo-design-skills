@@ -103,7 +103,12 @@ class BinBuilder(object):
 
     @classmethod
     def add_dozen_bets(cls, wheel):
-        pass
+        for dozen in range(0, 3):
+            oc = Outcome('{} {}'.format(RoG.dozen_bet_name, dozen + 1),
+                          RoG.dozen_bet_odds)
+            for n in range(0, 12):
+                bin_number = 12 * dozen + n + 1
+                wheel.add_outcome(bin_number, oc)
 
     @classmethod
     def add_column_bets(cls, wheel):

@@ -172,6 +172,17 @@ class BinBuilderTest(unittest.TestCase):
                 self.assertTrue(exp in actual_bin,
                                 '{} is not in {}'.format(exp, actual_bin))
 
+    # dozen bets
+    def test_all_dozen_bets(self):
+        for dozen in range(0, 3):
+            exp = Outcome('{} {}'.format(self.dozen_bet_name, dozen + 1),
+                          self.dozen_bet_odds)
+            for n in range(0, 12):
+                bin_number = 12 * dozen + n + 1
+                actual_bin = self.wheel.get_bin(bin_number)
+                self.assertTrue(exp in actual_bin,
+                                '{} is not in {}'.format(exp, actual_bin))
+
 
 if __name__ == '__main__':
     unittest.main()
