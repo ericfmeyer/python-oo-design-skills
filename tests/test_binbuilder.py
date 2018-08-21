@@ -47,18 +47,32 @@ class BinBuilderTest(unittest.TestCase):
     def test_five_bets_for_zero(self):
         actual_bin = self.wheel.get_bin(self.zero_bin)
         expected = Outcome(self.five_bet_name, self.five_bet_odds)
-        self.assertTrue(expected in actual_bin)
+        self.assertTrue(expected in actual_bin,
+                        '{} is not in {}'.format(expected, actual_bin))
 
     def test_five_bets_for_dbl_zero(self):
 
         actual_bin = self.wheel.get_bin(self.dbl_zero_bin)
         expected = Outcome(self.five_bet_name, self.five_bet_odds)
-        self.assertTrue(expected in actual_bin)
+        self.assertTrue(expected in actual_bin,
+                        '{} is not in {}'.format(expected, actual_bin))
 
     def test_no_other_five_bets(self):
         five_bet = Outcome(self.five_bet_name, self.five_bet_odds)
         for i in range(1, self.dbl_zero_bin):
-            self.assertTrue(five_bet not in self.wheel.get_bin(i))
+            actual_bin = self.wheel.get_bin(i)
+            self.assertTrue(five_bet not in actual_bin,
+                            '{} is in {}'.format(five_bet, actual_bin))
+
+    # verify zero has nothing but Five and Straight bets
+    def test_zero_and_dbl_zero_have_only_five_and_straight_bets(self):
+        zero = self.wheel.get_bin(0)
+        dbl_zero = self.wheel.get_bin(37)
+        for oc in zero | dbl_zero:
+            self.assertTrue(
+                self.five_bet_name or self.straight_bet_name in str(oc),
+                '{} is not in {}'.format(self.split_bet_name, str(oc))
+            )
 
     # straight bets
     def test_straight_bets_for_all_except_double_zero(self):
@@ -67,7 +81,8 @@ class BinBuilderTest(unittest.TestCase):
             expected = Outcome(
                 '{} {}'.format(self.straight_bet_name, bin_number),
                 self.straight_bet_odds)
-            self.assertTrue(expected in actual_bin)
+            self.assertTrue(expected in actual_bin,
+                            '{} is not in {}'.format(expected, actual_bin))
 
     def test_straight_bets_for_dbl_zero(self):
         bin_number = 37
@@ -75,7 +90,8 @@ class BinBuilderTest(unittest.TestCase):
         expected = Outcome(
             '{} {}'.format(self.straight_bet_name, '00'),
             self.straight_bet_odds)
-        self.assertTrue(expected in actual_bin)
+        self.assertTrue(expected in actual_bin,
+                        '{} is not in {}'.format(expected, actual_bin))
 
     # split bets
     def test_all_split_bets(self):
@@ -89,16 +105,12 @@ class BinBuilderTest(unittest.TestCase):
     def helper_split_bets_test(self, n, inc):
         actual_bin1 = self.wheel.get_bin(n)
         actual_bin2 = self.wheel.get_bin(n + inc)
-        exp_oc = Outcome('{} {}-{}'.format(self.split_bet_name, n, n + inc),
-                         self.split_bet_odds)
-        self.assertTrue(exp_oc in actual_bin1)
-        self.assertTrue(exp_oc in actual_bin2)
-
-    def test_no_split_bets_for_zeros(self):
-        zero = self.wheel.get_bin(0)
-        dbl_zero = self.wheel.get_bin(37)
-        for oc in zero | dbl_zero:
-            self.assertTrue(self.split_bet_name not in str(oc))
+        expected = Outcome('{} {}-{}'.format(self.split_bet_name, n, n + inc),
+                           self.split_bet_odds)
+        self.assertTrue(expected in actual_bin1,
+                        '{} is not in {}'.format(expected, actual_bin1))
+        self.assertTrue(expected in actual_bin2,
+                        '{} is not in {}'.format(expected, actual_bin2))
 
     # street bets
     def test_street_bets(self):
@@ -108,13 +120,9 @@ class BinBuilderTest(unittest.TestCase):
                 '{} {}-{}-{}'.format(self.street_bet_name, n, n + 1, n + 2),
                 self.street_bet_odds)
             for i in range(0, 3):
-                self.assertTrue(exp_oc in self.wheel.get_bin(n + i))
-
-    def test_no_street_bets_for_zeros(self):
-        zero = self.wheel.get_bin(0)
-        dbl_zero = self.wheel.get_bin(37)
-        for oc in zero | dbl_zero:
-            self.assertTrue(self.street_bet_name not in str(oc))
+                actual_bin = self.wheel.get_bin(n + i)
+                self.assertTrue(exp_oc in actual_bin,
+                                '{} is not in {}'.format(exp_oc, actual_bin))
 
     # corner bets
     def test_corner_bets_for_all_corners(self):
@@ -150,6 +158,19 @@ class BinBuilderTest(unittest.TestCase):
                        self.corner_bet_odds)]
         for exp in ocs:
             self.assertTrue(exp in self.wheel.get_bin(35))
+
+    # line bets
+    def test_all_line_bets(self):
+        for row in range(0, 11):
+            n = 3 * row + 1
+            exp = Outcome(self.line_bet_name +
+                          ' {:d}-{:d}-{:d}-{:d}-{:d}-{:d}'
+                          .format(n, n + 1, n + 2, n + 3, n + 4, n + 5),
+                          self.line_bet_odds)
+            for i in range(n, n + 6):
+                actual_bin = self.wheel.get_bin(n)
+                self.assertTrue(exp in actual_bin,
+                                '{} is not in {}'.format(exp, actual_bin))
 
 
 if __name__ == '__main__':

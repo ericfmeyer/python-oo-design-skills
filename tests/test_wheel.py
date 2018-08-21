@@ -1,6 +1,7 @@
 import unittest
 
 from casino.roulette.bin import Bin
+from casino.roulette.binbuilder import BinBuilder
 from casino.roulette.outcome import Outcome
 from casino.roulette.wheel import Wheel
 
@@ -11,11 +12,9 @@ class WheelTest(unittest.TestCase):
     """Test the implementation of the class Wheel."""
 
     def setUp(self):
-        self.oc1 = Outcome("Red", 1)
-        self.oc2 = Outcome("Even", 1)
-        self.oc3 = Outcome("Split 1-2", 17)
         self.test_wheel = Wheel()
         self.test_wheel.rng.seed(1)
+        BinBuilder().build_bins(self.test_wheel)
 
     def test_can_create_wheel(self):
         self.assertIsNotNone(self.test_wheel)
@@ -28,14 +27,16 @@ class WheelTest(unittest.TestCase):
     def test_get_returns_correct_bin(self):
         self.assertEqual(self.test_wheel.get_bin(1), self.test_wheel.bins[1])
 
-    def test_can_add_outcomes_to_wheel_bins(self):
-        self.test_wheel.add_outcome(1, self.oc1)
-        self.assertTrue(self.oc1 in self.test_wheel.get_bin(1))
-
     def test_wheel_returns_expected_bins(self):
         self.assertTrue(self.test_wheel.next() == self.test_wheel.bins[8])
         self.assertTrue(self.test_wheel.next() == self.test_wheel.bins[36])
         self.assertTrue(self.test_wheel.next() == self.test_wheel.bins[4])
+
+    def test_zero_bin_outcomes(self):
+        outcomes = [Outcome("Five 00-0-1-2-3", 8),
+                    Outcome("Number 0", 35)]
+        for exp in outcomes:
+            self.assertTrue(exp in self.test_wheel.get_bin(0))
 
 
 if __name__ == '__main__':

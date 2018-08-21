@@ -90,7 +90,16 @@ class BinBuilder(object):
 
     @classmethod
     def add_line_bets(cls, wheel):
-        pass
+        for row in range(0, 11):
+            n = 3 * row + 1
+            oc = Outcome(
+                '{:s} {:d}-{:d}-{:d}-{:d}-{:d}-{:d}'
+                .format(RoG.line_bet_name,
+                        n, n + 1, n + 2, n + 3, n + 4, n + 5),
+                RoG.line_bet_odds
+            )
+            for i in range(0, 6):
+                wheel.add_outcome(n + i, oc)
 
     @classmethod
     def add_dozen_bets(cls, wheel):
