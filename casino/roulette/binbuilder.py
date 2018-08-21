@@ -66,11 +66,27 @@ class BinBuilder(object):
 
     @classmethod
     def add_street_bets(cls, wheel):
-        pass
+        for row in range(0, 12):
+            n = 3 * row + 1
+            oc = Outcome(
+                '{} {}-{}-{}'.format(RoG.street_bet_name, n, n + 1, n + 2),
+                RoG.street_bet_odds
+            )
+            for i in range(0, 3):
+                wheel.add_outcome(n + i, oc)
 
     @classmethod
     def add_corner_bets(cls, wheel):
-        pass
+        for row in range(0, 11):
+            for i in range(1, 3):
+                n = 3 * row + i
+                oc = Outcome(
+                    '{} {}-{}-{}-{}'.format(
+                        RoG.corner_bet_name, n, n + 1, n + 3, n + 4),
+                    RoG.corner_bet_odds
+                )
+                for j in [n, n + 1, n + 3, n + 4]:
+                    wheel.add_outcome(j, oc)
 
     @classmethod
     def add_line_bets(cls, wheel):
@@ -80,5 +96,10 @@ class BinBuilder(object):
     def add_dozen_bets(cls, wheel):
         pass
 
-    def add_column_bets(self, wheel):
+    @classmethod
+    def add_column_bets(cls, wheel):
+        pass
+
+    @classmethod
+    def add_even_money_bets(cls, wheel):
         pass
