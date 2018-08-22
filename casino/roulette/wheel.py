@@ -24,6 +24,7 @@ class Wheel(object):
         """Create a new Wheel with 38 empty bins."""
         self.bins = tuple(Bin() for _ in range(38))
         self.rng = Random()
+        self.all_outcomes = dict()
 
     def add_outcome(self, number, outcome):
         """Add the outcome to the bin given by the number.
@@ -33,6 +34,7 @@ class Wheel(object):
         :return:
         """
         self.bins[number].add(outcome)
+        self.all_outcomes[outcome.name] = outcome
 
     def next(self):
         """Return a bin at random.
@@ -48,3 +50,6 @@ class Wheel(object):
         :return: (Bin) the requested bin
         """
         return self.bins[n]
+
+    def get_outcome(self, name):
+        return self.all_outcomes.get(name)

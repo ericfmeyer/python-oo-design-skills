@@ -2,6 +2,7 @@ import unittest
 
 from casino.roulette.bin import Bin
 from casino.roulette.binbuilder import BinBuilder
+from casino.roulette.game import RouletteGame as RoG
 from casino.roulette.outcome import Outcome
 from casino.roulette.wheel import Wheel
 
@@ -33,8 +34,9 @@ class WheelTest(unittest.TestCase):
         self.assertTrue(self.test_wheel.next() == self.test_wheel.bins[4])
 
     def test_zero_bin_outcomes(self):
-        outcomes = [Outcome("Five 00-0-1-2-3", 8),
-                    Outcome("Number 0", 35)]
+        outcomes = [Outcome(RoG.five_bet_name, RoG.five_bet_odds),
+                    Outcome(RoG.straight_bet_name + ' 0',
+                            RoG.straight_bet_odds)]
         actual_bin = self.test_wheel.get_bin(0)
         for exp in outcomes:
             self.assertTrue(exp in actual_bin,
@@ -42,18 +44,18 @@ class WheelTest(unittest.TestCase):
 
     def test_bin_one_outcomes(self):
         outcomes = [
-            Outcome("Number 1", 35),
-            Outcome("Red", 1),
-            Outcome("Odd", 1),
-            Outcome("Low", 1),
-            Outcome("Column 1", 1),
-            Outcome("Dozen 1", 2),
-            Outcome("Split 1-2", 17),
-            Outcome("Split 1-4", 17),
-            Outcome("Street 1-2-3", 8),
-            Outcome("Corner 1-2-4-5", 5),
-            Outcome("Five 00-0-1-2-3", 3),
-            Outcome("Line 1-2-3-4-5-6", 7)
+            Outcome(RoG.straight_bet_name + ' 1', RoG.straight_bet_odds),
+            Outcome(RoG.red_bet_name, RoG.even_money_bet_odds),
+            Outcome(RoG.odd_bet_name, RoG.even_money_bet_odds),
+            Outcome(RoG.low_bet_name, RoG.even_money_bet_odds),
+            Outcome(RoG.column_bet_name + " 1", RoG.column_bet_odds),
+            Outcome(RoG.dozen_bet_name + " 1", RoG.dozen_bet_odds),
+            Outcome(RoG.split_bet_name + " 1-2", RoG.split_bet_odds),
+            Outcome(RoG.split_bet_name + " 1-4", RoG.split_bet_odds),
+            Outcome(RoG.street_bet_name + " 1-2-3", RoG.street_bet_odds),
+            Outcome(RoG.corner_bet_name + " 1-2-4-5", RoG.corner_bet_odds),
+            Outcome(RoG.five_bet_name, RoG.five_bet_odds),
+            Outcome(RoG.line_bet_name + " 1-2-3-4-5-6", RoG.line_bet_odds)
         ]
         actual_bin = self.test_wheel.get_bin(1)
         self.assertEqual(len(outcomes), len(actual_bin),
@@ -61,6 +63,44 @@ class WheelTest(unittest.TestCase):
         for exp in outcomes:
             self.assertTrue(exp in actual_bin,
                             '{} not in {}'.format(exp, actual_bin))
+
+    def test_bin_twenty_outcomes(self):
+        outcomes = [
+            Outcome(RoG.straight_bet_name + ' 20', RoG.straight_bet_odds),
+            Outcome(RoG.black_bet_name, RoG.even_money_bet_odds),
+            Outcome(RoG.even_bet_name, RoG.even_money_bet_odds),
+            Outcome(RoG.high_bet_name, RoG.even_money_bet_odds),
+            Outcome(RoG.column_bet_name + " 2", RoG.column_bet_odds),
+            Outcome(RoG.dozen_bet_name + " 2", RoG.dozen_bet_odds),
+            Outcome(RoG.split_bet_name + " 17-20", RoG.split_bet_odds),
+            Outcome(RoG.split_bet_name + " 19-20", RoG.split_bet_odds),
+            Outcome(RoG.split_bet_name + " 20-21", RoG.split_bet_odds),
+            Outcome(RoG.split_bet_name + " 20-23", RoG.split_bet_odds),
+            Outcome(RoG.street_bet_name + " 19-20-21", RoG.street_bet_odds),
+            Outcome(RoG.corner_bet_name + " 16-17-19-20", RoG.corner_bet_odds),
+            Outcome(RoG.corner_bet_name + " 17-18-20-21", RoG.corner_bet_odds),
+            Outcome(RoG.corner_bet_name + " 19-20-22-23", RoG.corner_bet_odds),
+            Outcome(RoG.corner_bet_name + " 20-21-23-24", RoG.corner_bet_odds),
+            Outcome(RoG.line_bet_name + " 16-17-18-19-20-21",
+                    RoG.line_bet_odds),
+            Outcome(RoG.line_bet_name + " 19-20-21-22-23-24",
+                    RoG.line_bet_odds)
+        ]
+        actual_bin = self.test_wheel.get_bin(20)
+        self.assertEqual(len(outcomes), len(actual_bin),
+                         actual_bin)
+        for exp in outcomes:
+            self.assertTrue(exp in actual_bin,
+                            '{} not in {}'.format(exp, actual_bin))
+
+    def test_get_outcome(self):
+        self.assertEqual(self.test_wheel.get_outcome("Red"),
+                         Outcome(RoG.red_bet_name, RoG.even_money_bet_odds))
+        self.assertEqual(self.test_wheel.get_outcome("Five 00-0-1-2-3"),
+                         Outcome(RoG.five_bet_name, RoG.five_bet_odds))
+        self.assertEqual(self.test_wheel.get_outcome("Split 32-33"),
+                         Outcome(RoG.split_bet_name + " 32-33",
+                                 RoG.split_bet_odds))
 
 
 if __name__ == '__main__':
