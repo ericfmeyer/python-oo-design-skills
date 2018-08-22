@@ -49,12 +49,15 @@ class WheelTest(unittest.TestCase):
             Outcome("Column 1", 1),
             Outcome("Dozen 1", 2),
             Outcome("Split 1-2", 17),
+            Outcome("Split 1-4", 17),
             Outcome("Street 1-2-3", 8),
             Outcome("Corner 1-2-4-5", 5),
             Outcome("Five 00-0-1-2-3", 3),
             Outcome("Line 1-2-3-4-5-6", 7)
         ]
         actual_bin = self.test_wheel.get_bin(1)
+        self.assertEqual(len(outcomes), len(actual_bin),
+                         actual_bin)
         for exp in outcomes:
             self.assertTrue(exp in actual_bin,
                             '{} not in {}'.format(exp, actual_bin))
