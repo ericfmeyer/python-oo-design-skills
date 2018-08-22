@@ -14,4 +14,8 @@ class Bet(object):
         - Player: creates bets.
     """
 
+    def __init__(self, amount, outcome):
+        self.amount = amount
+        self.outcome = outcome
+
     pass

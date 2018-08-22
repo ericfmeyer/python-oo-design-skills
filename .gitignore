@@ -113,3 +113,5 @@ data/
 tests/test_output.xlsx
 .idea/**/misc.xml
 .idea/**/python-oo-design-skills.iml
+.idea/misc.xml
+.idea/python-oo-design-skills.iml
