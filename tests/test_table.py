@@ -2,8 +2,8 @@ import unittest
 
 from casino.roulette.bet import Bet
 from casino.roulette.outcome import Outcome
-from casino.roulette.table import Table
 from casino.roulette.table import InvalidBet
+from casino.roulette.table import Table
 
 
 class TableTest(unittest.TestCase):

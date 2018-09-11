@@ -13,13 +13,13 @@ class BetTest(unittest.TestCase):
                                          RoG.even_money_bet_odds))
         self.straight_bet = Bet(5, Outcome(
             RoG.straight_bet_name + ' 35', RoG.straight_bet_odds)
-        )
+                                )
 
     def test_can_create_bet(self):
         self.assertIsNotNone(self.black_bet)
 
     def test_win_amount_is_correct_for_black_bet(self):
-        expected = 20   # 10 * 1 + 10
+        expected = 20  # 10 * 1 + 10
         self.assertEqual(expected, self.black_bet.win_amount())
 
     def test_win_amount_is_correct_for_straight_bet(self):

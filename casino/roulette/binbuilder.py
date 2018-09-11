@@ -4,8 +4,8 @@ Module: binbuilder
 Implements the BinBuilder class.
 """
 
-from casino.roulette.outcome import Outcome
 from casino.roulette.game import RouletteGame as RoG
+from casino.roulette.outcome import Outcome
 
 
 class BinBuilder(object):
@@ -95,8 +95,8 @@ class BinBuilder(object):
             n = 3 * row + 1
             oc = Outcome(
                 '{:s} {:d}-{:d}-{:d}-{:d}-{:d}-{:d}'
-                .format(RoG.line_bet_name,
-                        n, n + 1, n + 2, n + 3, n + 4, n + 5),
+                    .format(RoG.line_bet_name,
+                            n, n + 1, n + 2, n + 3, n + 4, n + 5),
                 RoG.line_bet_odds
             )
             for i in range(0, 6):
