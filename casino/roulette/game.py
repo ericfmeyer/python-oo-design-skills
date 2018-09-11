@@ -19,30 +19,30 @@ class RouletteGame(object):
         - Outcome: Game determines wins/losses based on outcomes in the bin.
     """
 
-    straight_bet_odds = 35
-    split_bet_odds = 17
-    street_bet_odds = 11
-    corner_bet_odds = 8
-    five_bet_odds = 6
-    line_bet_odds = 5
-    dozen_bet_odds = 2
-    column_bet_odds = 2
-    even_money_bet_odds = 1
+    STRAIGHT_BET_ODDS = 35
+    SPLIT_BET_ODDS = 17
+    STREET_BET_ODDS = 11
+    CORNER_BET_ODDS = 8
+    FIVE_BET_ODDS = 6
+    LINE_BET_ODDS = 5
+    DOZEN_BET_ODDS = 2
+    COLUMN_BET_ODDS = 2
+    EVEN_MONEY_BET_ODDS = 1
 
-    straight_bet_name = 'Number'
-    split_bet_name = 'Split'
-    street_bet_name = 'Street'
-    corner_bet_name = 'Corner'
-    five_bet_name = 'Five 00-0-1-2-3'
-    line_bet_name = 'Line'
-    dozen_bet_name = 'Dozen'
-    column_bet_name = 'Column'
-    black_bet_name = 'Black'
-    red_bet_name = 'Red'
-    even_bet_name = 'Even'
-    odd_bet_name = 'Odd'
-    high_bet_name = 'High'
-    low_bet_name = 'Low'
+    STRAIGHT_BET_NAME = 'Number'
+    SPLIT_BET_NAME = 'Split'
+    STREET_BET_NAME = 'Street'
+    CORNER_BET_NAME = 'Corner'
+    FIVE_BET_NAME = 'Five 00-0-1-2-3'
+    LINE_BET_NAME = 'Line'
+    DOZEN_BET_NAME = 'Dozen'
+    COLUMN_BET_NAME = 'Column'
+    BLACK_BET_NAME = 'Black'
+    RED_BET_NAME = 'Red'
+    EVEN_BET_NAME = 'Even'
+    ODD_BET_NAME = 'Odd'
+    HIGH_BET_NAME = 'High'
+    LOW_BET_NAME = 'Low'
 
-    red_bins = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19,
+    RED_BINS = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19,
                 21, 23, 25, 27, 30, 32, 34, 36]

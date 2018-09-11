@@ -34,9 +34,9 @@ class WheelTest(unittest.TestCase):
         self.assertTrue(self.test_wheel.next() == self.test_wheel.bins[4])
 
     def test_zero_bin_outcomes(self):
-        outcomes = [Outcome(RoG.five_bet_name, RoG.five_bet_odds),
-                    Outcome(RoG.straight_bet_name + ' 0',
-                            RoG.straight_bet_odds)]
+        outcomes = [Outcome(RoG.FIVE_BET_NAME, RoG.FIVE_BET_ODDS),
+                    Outcome(RoG.STRAIGHT_BET_NAME + ' 0',
+                            RoG.STRAIGHT_BET_ODDS)]
         actual_bin = self.test_wheel.get_bin(0)
         for exp in outcomes:
             self.assertTrue(exp in actual_bin,
@@ -44,18 +44,18 @@ class WheelTest(unittest.TestCase):
 
     def test_bin_one_outcomes(self):
         outcomes = [
-            Outcome(RoG.straight_bet_name + ' 1', RoG.straight_bet_odds),
-            Outcome(RoG.red_bet_name, RoG.even_money_bet_odds),
-            Outcome(RoG.odd_bet_name, RoG.even_money_bet_odds),
-            Outcome(RoG.low_bet_name, RoG.even_money_bet_odds),
-            Outcome(RoG.column_bet_name + " 1", RoG.column_bet_odds),
-            Outcome(RoG.dozen_bet_name + " 1", RoG.dozen_bet_odds),
-            Outcome(RoG.split_bet_name + " 1-2", RoG.split_bet_odds),
-            Outcome(RoG.split_bet_name + " 1-4", RoG.split_bet_odds),
-            Outcome(RoG.street_bet_name + " 1-2-3", RoG.street_bet_odds),
-            Outcome(RoG.corner_bet_name + " 1-2-4-5", RoG.corner_bet_odds),
-            Outcome(RoG.five_bet_name, RoG.five_bet_odds),
-            Outcome(RoG.line_bet_name + " 1-2-3-4-5-6", RoG.line_bet_odds)
+            Outcome(RoG.STRAIGHT_BET_NAME + ' 1', RoG.STRAIGHT_BET_ODDS),
+            Outcome(RoG.RED_BET_NAME, RoG.EVEN_MONEY_BET_ODDS),
+            Outcome(RoG.ODD_BET_NAME, RoG.EVEN_MONEY_BET_ODDS),
+            Outcome(RoG.LOW_BET_NAME, RoG.EVEN_MONEY_BET_ODDS),
+            Outcome(RoG.COLUMN_BET_NAME + " 1", RoG.COLUMN_BET_ODDS),
+            Outcome(RoG.DOZEN_BET_NAME + " 1", RoG.DOZEN_BET_ODDS),
+            Outcome(RoG.SPLIT_BET_NAME + " 1-2", RoG.SPLIT_BET_ODDS),
+            Outcome(RoG.SPLIT_BET_NAME + " 1-4", RoG.SPLIT_BET_ODDS),
+            Outcome(RoG.STREET_BET_NAME + " 1-2-3", RoG.STREET_BET_ODDS),
+            Outcome(RoG.CORNER_BET_NAME + " 1-2-4-5", RoG.CORNER_BET_ODDS),
+            Outcome(RoG.FIVE_BET_NAME, RoG.FIVE_BET_ODDS),
+            Outcome(RoG.LINE_BET_NAME + " 1-2-3-4-5-6", RoG.LINE_BET_ODDS)
         ]
         actual_bin = self.test_wheel.get_bin(1)
         self.assertEqual(len(outcomes), len(actual_bin),
@@ -66,25 +66,25 @@ class WheelTest(unittest.TestCase):
 
     def test_bin_twenty_outcomes(self):
         outcomes = [
-            Outcome(RoG.straight_bet_name + ' 20', RoG.straight_bet_odds),
-            Outcome(RoG.black_bet_name, RoG.even_money_bet_odds),
-            Outcome(RoG.even_bet_name, RoG.even_money_bet_odds),
-            Outcome(RoG.high_bet_name, RoG.even_money_bet_odds),
-            Outcome(RoG.column_bet_name + " 2", RoG.column_bet_odds),
-            Outcome(RoG.dozen_bet_name + " 2", RoG.dozen_bet_odds),
-            Outcome(RoG.split_bet_name + " 17-20", RoG.split_bet_odds),
-            Outcome(RoG.split_bet_name + " 19-20", RoG.split_bet_odds),
-            Outcome(RoG.split_bet_name + " 20-21", RoG.split_bet_odds),
-            Outcome(RoG.split_bet_name + " 20-23", RoG.split_bet_odds),
-            Outcome(RoG.street_bet_name + " 19-20-21", RoG.street_bet_odds),
-            Outcome(RoG.corner_bet_name + " 16-17-19-20", RoG.corner_bet_odds),
-            Outcome(RoG.corner_bet_name + " 17-18-20-21", RoG.corner_bet_odds),
-            Outcome(RoG.corner_bet_name + " 19-20-22-23", RoG.corner_bet_odds),
-            Outcome(RoG.corner_bet_name + " 20-21-23-24", RoG.corner_bet_odds),
-            Outcome(RoG.line_bet_name + " 16-17-18-19-20-21",
-                    RoG.line_bet_odds),
-            Outcome(RoG.line_bet_name + " 19-20-21-22-23-24",
-                    RoG.line_bet_odds)
+            Outcome(RoG.STRAIGHT_BET_NAME + ' 20', RoG.STRAIGHT_BET_ODDS),
+            Outcome(RoG.BLACK_BET_NAME, RoG.EVEN_MONEY_BET_ODDS),
+            Outcome(RoG.EVEN_BET_NAME, RoG.EVEN_MONEY_BET_ODDS),
+            Outcome(RoG.HIGH_BET_NAME, RoG.EVEN_MONEY_BET_ODDS),
+            Outcome(RoG.COLUMN_BET_NAME + " 2", RoG.COLUMN_BET_ODDS),
+            Outcome(RoG.DOZEN_BET_NAME + " 2", RoG.DOZEN_BET_ODDS),
+            Outcome(RoG.SPLIT_BET_NAME + " 17-20", RoG.SPLIT_BET_ODDS),
+            Outcome(RoG.SPLIT_BET_NAME + " 19-20", RoG.SPLIT_BET_ODDS),
+            Outcome(RoG.SPLIT_BET_NAME + " 20-21", RoG.SPLIT_BET_ODDS),
+            Outcome(RoG.SPLIT_BET_NAME + " 20-23", RoG.SPLIT_BET_ODDS),
+            Outcome(RoG.STREET_BET_NAME + " 19-20-21", RoG.STREET_BET_ODDS),
+            Outcome(RoG.CORNER_BET_NAME + " 16-17-19-20", RoG.CORNER_BET_ODDS),
+            Outcome(RoG.CORNER_BET_NAME + " 17-18-20-21", RoG.CORNER_BET_ODDS),
+            Outcome(RoG.CORNER_BET_NAME + " 19-20-22-23", RoG.CORNER_BET_ODDS),
+            Outcome(RoG.CORNER_BET_NAME + " 20-21-23-24", RoG.CORNER_BET_ODDS),
+            Outcome(RoG.LINE_BET_NAME + " 16-17-18-19-20-21",
+                    RoG.LINE_BET_ODDS),
+            Outcome(RoG.LINE_BET_NAME + " 19-20-21-22-23-24",
+                    RoG.LINE_BET_ODDS)
         ]
         actual_bin = self.test_wheel.get_bin(20)
         self.assertEqual(len(outcomes), len(actual_bin),
@@ -95,12 +95,12 @@ class WheelTest(unittest.TestCase):
 
     def test_get_outcome(self):
         self.assertEqual(self.test_wheel.get_outcome("Red"),
-                         Outcome(RoG.red_bet_name, RoG.even_money_bet_odds))
+                         Outcome(RoG.RED_BET_NAME, RoG.EVEN_MONEY_BET_ODDS))
         self.assertEqual(self.test_wheel.get_outcome("Five 00-0-1-2-3"),
-                         Outcome(RoG.five_bet_name, RoG.five_bet_odds))
+                         Outcome(RoG.FIVE_BET_NAME, RoG.FIVE_BET_ODDS))
         self.assertEqual(self.test_wheel.get_outcome("Split 32-33"),
-                         Outcome(RoG.split_bet_name + " 32-33",
-                                 RoG.split_bet_odds))
+                         Outcome(RoG.SPLIT_BET_NAME + " 32-33",
+                                 RoG.SPLIT_BET_ODDS))
 
 
 if __name__ == '__main__':

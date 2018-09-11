@@ -32,19 +32,19 @@ class BinBuilder(object):
     def add_five_bets(cls, wheel):
         """Add five bet outcomes to bins 00, 0, 1, 2 and 3"""
         for i in (0, 1, 2, 3, 37):
-            wheel.add_outcome(i, Outcome(RoG.five_bet_name, RoG.five_bet_odds))
+            wheel.add_outcome(i, Outcome(RoG.FIVE_BET_NAME, RoG.FIVE_BET_ODDS))
 
     @classmethod
     def add_straight_bets(cls, wheel):
         for n in range(0, 37):
             wheel.add_outcome(n, Outcome(
-                '{} {}'.format(RoG.straight_bet_name, n),
-                RoG.straight_bet_odds))
+                '{} {}'.format(RoG.STRAIGHT_BET_NAME, n),
+                RoG.STRAIGHT_BET_ODDS))
 
         # special case for double zero, at index 37
         wheel.add_outcome(37, Outcome(
-            '{} {}'.format(RoG.straight_bet_name, '00'),
-            RoG.straight_bet_odds))
+            '{} {}'.format(RoG.STRAIGHT_BET_NAME, '00'),
+            RoG.STRAIGHT_BET_ODDS))
 
     @classmethod
     def add_split_bets(cls, wheel):
@@ -60,8 +60,8 @@ class BinBuilder(object):
     @classmethod
     def helper_add_split_bets(cls, wheel, n_bin, inc):
         oc = Outcome(
-            '{} {}-{}'.format(RoG.split_bet_name, n_bin, n_bin + inc),
-            RoG.split_bet_odds)
+            '{} {}-{}'.format(RoG.SPLIT_BET_NAME, n_bin, n_bin + inc),
+            RoG.SPLIT_BET_ODDS)
         wheel.add_outcome(n_bin, oc)
         wheel.add_outcome(n_bin + inc, oc)
 
@@ -70,8 +70,8 @@ class BinBuilder(object):
         for row in range(0, 12):
             n = 3 * row + 1
             oc = Outcome(
-                '{} {}-{}-{}'.format(RoG.street_bet_name, n, n + 1, n + 2),
-                RoG.street_bet_odds
+                '{} {}-{}-{}'.format(RoG.STREET_BET_NAME, n, n + 1, n + 2),
+                RoG.STREET_BET_ODDS
             )
             for i in range(0, 3):
                 wheel.add_outcome(n + i, oc)
@@ -83,8 +83,8 @@ class BinBuilder(object):
                 n = 3 * row + i
                 oc = Outcome(
                     '{} {}-{}-{}-{}'.format(
-                        RoG.corner_bet_name, n, n + 1, n + 3, n + 4),
-                    RoG.corner_bet_odds
+                        RoG.CORNER_BET_NAME, n, n + 1, n + 3, n + 4),
+                    RoG.CORNER_BET_ODDS
                 )
                 for j in [n, n + 1, n + 3, n + 4]:
                     wheel.add_outcome(j, oc)
@@ -95,9 +95,9 @@ class BinBuilder(object):
             n = 3 * row + 1
             oc = Outcome(
                 '{:s} {:d}-{:d}-{:d}-{:d}-{:d}-{:d}'
-                    .format(RoG.line_bet_name,
+                    .format(RoG.LINE_BET_NAME,
                             n, n + 1, n + 2, n + 3, n + 4, n + 5),
-                RoG.line_bet_odds
+                RoG.LINE_BET_ODDS
             )
             for i in range(0, 6):
                 wheel.add_outcome(n + i, oc)
@@ -105,8 +105,8 @@ class BinBuilder(object):
     @classmethod
     def add_dozen_bets(cls, wheel):
         for dozen in range(0, 3):
-            oc = Outcome('{} {}'.format(RoG.dozen_bet_name, dozen + 1),
-                         RoG.dozen_bet_odds)
+            oc = Outcome('{} {}'.format(RoG.DOZEN_BET_NAME, dozen + 1),
+                         RoG.DOZEN_BET_ODDS)
             for n in range(0, 12):
                 bin_number = 12 * dozen + n + 1
                 wheel.add_outcome(bin_number, oc)
@@ -114,20 +114,20 @@ class BinBuilder(object):
     @classmethod
     def add_column_bets(cls, wheel):
         for col in range(0, 3):
-            oc = Outcome('{} {}'.format(RoG.column_bet_name, col + 1),
-                         RoG.dozen_bet_odds)
+            oc = Outcome('{} {}'.format(RoG.COLUMN_BET_NAME, col + 1),
+                         RoG.DOZEN_BET_ODDS)
             for row in range(0, 12):
                 bin_number = 3 * row + col + 1
                 wheel.add_outcome(bin_number, oc)
 
     @classmethod
     def add_even_money_bets(cls, wheel):
-        red = Outcome(RoG.red_bet_name, RoG.even_money_bet_odds)
-        black = Outcome(RoG.black_bet_name, RoG.even_money_bet_odds)
-        even = Outcome(RoG.even_bet_name, RoG.even_money_bet_odds)
-        odd = Outcome(RoG.odd_bet_name, RoG.even_money_bet_odds)
-        high = Outcome(RoG.high_bet_name, RoG.even_money_bet_odds)
-        low = Outcome(RoG.low_bet_name, RoG.even_money_bet_odds)
+        red = Outcome(RoG.RED_BET_NAME, RoG.EVEN_MONEY_BET_ODDS)
+        black = Outcome(RoG.BLACK_BET_NAME, RoG.EVEN_MONEY_BET_ODDS)
+        even = Outcome(RoG.EVEN_BET_NAME, RoG.EVEN_MONEY_BET_ODDS)
+        odd = Outcome(RoG.ODD_BET_NAME, RoG.EVEN_MONEY_BET_ODDS)
+        high = Outcome(RoG.HIGH_BET_NAME, RoG.EVEN_MONEY_BET_ODDS)
+        low = Outcome(RoG.LOW_BET_NAME, RoG.EVEN_MONEY_BET_ODDS)
 
         for bin_number in range(1, 37):
             if bin_number < 19:
@@ -140,7 +140,7 @@ class BinBuilder(object):
             else:
                 wheel.add_outcome(bin_number, odd)
 
-            if bin_number in RoG.red_bins:
+            if bin_number in RoG.RED_BINS:
                 wheel.add_outcome(bin_number, red)
             else:
                 wheel.add_outcome(bin_number, black)

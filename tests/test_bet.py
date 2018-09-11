@@ -9,10 +9,10 @@ class BetTest(unittest.TestCase):
     """Test the implementation of the class Bet."""
 
     def setUp(self):
-        self.black_bet = Bet(10, Outcome(RoG.black_bet_name,
-                                         RoG.even_money_bet_odds))
+        self.black_bet = Bet(10, Outcome(RoG.BLACK_BET_NAME,
+                                         RoG.EVEN_MONEY_BET_ODDS))
         self.straight_bet = Bet(5, Outcome(
-            RoG.straight_bet_name + ' 35', RoG.straight_bet_odds)
+            RoG.STRAIGHT_BET_NAME + ' 35', RoG.STRAIGHT_BET_ODDS)
                                 )
 
     def test_can_create_bet(self):
