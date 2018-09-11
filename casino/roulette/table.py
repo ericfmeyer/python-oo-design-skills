@@ -65,11 +65,11 @@ class Table(object):
     def is_valid(self):
         total = 0
         for bet in self.bets:
-            if bet.amount < self.TABLE_MIN:
+            if bet.amount < self.minimum:
                 raise InvalidBet
             total += bet.amount
 
-        if total > self.TABLE_LIMIT:
+        if total > self.limit:
             raise InvalidBet
 
         return True

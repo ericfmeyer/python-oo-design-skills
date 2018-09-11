@@ -66,15 +66,43 @@ class TableTest(unittest.TestCase):
 
 
 # TODO: finish test of is_valid()
-# class TableIsValidTest(unittest.TestCase):
-#     def setUp(self):
-#         self.table = Table()
-#         self.under_min_bet = Bet(5, Outcome("Red", 1))
-#         self.one_bet_over_max = Bet(301, Outcome("Red", 1))
-#
-#     def test_is_valid_raises_exception_for_bet_under_minimum(self):
-#         self.table.place_bet(self.under_min_bet)
-#         self.assertRaises(InvalidBet, self.table.is_valid())
+class TableIsValidTest(unittest.TestCase):
+    def setUp(self):
+        self.table = Table()
+
+    def test_is_valid_raises_exception_for_bet_under_min(self):
+        under_min_bet = Bet(9, Outcome("Red", 1))
+        self.table.place_bet(under_min_bet)
+        self.assertRaises(InvalidBet, self.table.is_valid)
+
+    def test_is_valid_raises_exception_for_bet_over_max(self):
+        one_bet_over_max = Bet(301, Outcome("Red", 1))
+        self.table.place_bet(one_bet_over_max)
+        self.assertRaises(InvalidBet, self.table.is_valid)
+
+    def test_is_valid_returns_true_for_minimum_bet(self):
+        at_min_bet = Bet(10, Outcome("Red", 1))
+        self.table.place_bet(at_min_bet)
+        self.assertTrue(self.table.is_valid())
+
+    def test_is_valid_with_bets_exceeding_limit(self):
+        bet1 = Bet(291, Outcome("Red", 1))
+        bet2 = Bet(10, Outcome("Red", 1))
+        self.table.place_bet(bet1)
+        self.assertTrue(self.table.is_valid())
+        self.table.place_bet(bet2)
+        self.assertRaises(InvalidBet, self.table.is_valid)
+
+    def test_is_valid_with_bets_below_limit(self):
+        bet1 = Bet(280, Outcome("Red", 1))
+        bet2 = Bet(10, Outcome("Red", 1))
+        bet3 = Bet(10, Outcome("Red", 1))
+        self.table.place_bet(bet1)
+        self.assertTrue(self.table.is_valid())
+        self.table.place_bet(bet2)
+        self.assertTrue(self.table.is_valid())
+        self.table.place_bet(bet3)
+        self.assertTrue(self.table.is_valid())
 
 
 if __name__ == '__main__':
