@@ -65,7 +65,6 @@ class TableTest(unittest.TestCase):
         self.assertEqual(expected, repr(self.table))
 
 
-# TODO: finish test of is_valid()
 class TableIsValidTest(unittest.TestCase):
     def setUp(self):
         self.table = Table()
