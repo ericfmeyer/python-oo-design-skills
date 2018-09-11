@@ -133,19 +133,23 @@ class BinBuilderTest(unittest.TestCase):
     # corner bets
     def test_corner_bets_for_all_corners(self):
         self.assertTrue(
-            Outcome(self.corner_bet_name + ' 1-2-4-5', self.corner_bet_odds)
+            Outcome(self.corner_bet_name + ' 1-2-4-5',
+                    self.corner_bet_odds)
             in self.wheel.get_bin(1)
         )
         self.assertTrue(
-            Outcome(self.corner_bet_name + ' 2-3-5-6', self.corner_bet_odds)
+            Outcome(self.corner_bet_name + ' 2-3-5-6',
+                    self.corner_bet_odds)
             in self.wheel.get_bin(3)
         )
         self.assertTrue(
-            Outcome(self.corner_bet_name + ' 31-32-34-35', self.corner_bet_odds)
+            Outcome(self.corner_bet_name + ' 31-32-34-35',
+                    self.corner_bet_odds)
             in self.wheel.get_bin(34)
         )
         self.assertTrue(
-            Outcome(self.corner_bet_name + ' 32-33-35-36', self.corner_bet_odds)
+            Outcome(self.corner_bet_name + ' 32-33-35-36',
+                    self.corner_bet_odds)
             in self.wheel.get_bin(36)
         )
 
