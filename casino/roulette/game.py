@@ -46,3 +46,28 @@ class RouletteGame(object):
 
     RED_BINS = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19,
                 21, 23, 25, 27, 30, 32, 34, 36]
+
+    def __init__(self, wheel, table):
+        """Construct a new game using the given Wheel and Table.
+
+        :param wheel: (Wheel) the Wheel instance which produces random events.
+        :param table: (Table) the Table instance which holds bets to be
+                              resolved.
+        """
+        self.wheel = wheel
+        self.table = table
+        self.player = None
+
+    def cycle(self, player):
+        """Execute a single cycle of play with a given Player.
+
+        :param player: (Player) the individual Player that places bets,
+                                receives winnings and pays losses.
+        """
+        player.place_bets()
+        winning_bin = self.wheel.next()
+        for bet in self.table:
+            if bet.outcome in winning_bin:
+                player.win(bet)
+            else:
+                player.lose(bet)
