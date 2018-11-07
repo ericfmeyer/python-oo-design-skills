@@ -17,7 +17,7 @@ class Passenger57(object):
     constructs a bet on that outcome, and places the bet.
     """
     def __init__(self, table, wheel):
-        """
+        """Create instance of Passenger57 that always bets on Black.
 
         :param table: (Table) the table to place bets on.
         :param wheel: (Wheel) the wheel instance which defines all Outcomes.
