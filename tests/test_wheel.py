@@ -1,3 +1,4 @@
+from unittest.mock import Mock
 import unittest
 
 from casino.roulette.bin import Bin
@@ -6,16 +7,16 @@ from casino.roulette.game import RouletteGame as RoG
 from casino.roulette.outcome import Outcome
 from casino.roulette.wheel import Wheel
 
-EXPECTED_SPINS = [8, 36, 4, 16, 7, 31, 28, 30, 24, 13]
+TEST_BIN = "bin1"
 
 
 class WheelTest(unittest.TestCase):
     """Test the implementation of the class Wheel."""
-
     def setUp(self):
         self.test_wheel = Wheel()
-        self.test_wheel.rng.seed(1)
         BinBuilder().build_bins(self.test_wheel)
+        self.test_wheel.rng = Mock()
+        self.test_wheel.rng.choice = Mock(return_value=TEST_BIN)
 
     def test_can_create_wheel(self):
         self.assertIsNotNone(self.test_wheel)
@@ -28,10 +29,8 @@ class WheelTest(unittest.TestCase):
     def test_get_returns_correct_bin(self):
         self.assertEqual(self.test_wheel.get_bin(1), self.test_wheel.bins[1])
 
-    def test_wheel_returns_expected_bins(self):
-        self.assertTrue(self.test_wheel.next() == self.test_wheel.bins[8])
-        self.assertTrue(self.test_wheel.next() == self.test_wheel.bins[36])
-        self.assertTrue(self.test_wheel.next() == self.test_wheel.bins[4])
+    def test_wheel_returns_expected_bin(self):
+        self.assertTrue(self.test_wheel.next() == TEST_BIN)
 
     def test_zero_bin_outcomes(self):
         outcomes = [Outcome(RoG.FIVE_BET_NAME, RoG.FIVE_BET_ODDS),
