@@ -1,8 +1,4 @@
-"""Package: casino.roulette
-Module: bet
-
-Implements the Bet class.
-"""
+"""Implements the Bet class."""
 
 
 class Bet(object):

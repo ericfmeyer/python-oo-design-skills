@@ -1,8 +1,4 @@
-"""Package: casino.roulette
-Module: game
-
-Implements the RouletteGame class.
-"""
+"""Implements the RouletteGame class."""
 
 
 class RouletteGame(object):

@@ -1,8 +1,4 @@
-"""Package: casino.roulette
-Module: bin
-
-Implements the Bin class.
-"""
+"""Implements the Bin class."""
 
 
 class Bin(set):

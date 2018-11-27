@@ -1,14 +1,12 @@
-"""Package: casino.roulette
-Module: binbuilder
-
-Implements the BinBuilder class.
-"""
+"""Implements the BinBuilder class."""
 
 from casino.roulette.game import RouletteGame as RoG
 from casino.roulette.outcome import Outcome
 
 
 class BinBuilder(object):
+    """Helper class to generate all outcomes and associate them to a wheel."""
+
     def __init__(self):
         """Create an instance of BinBuilder."""
         pass
@@ -30,12 +28,13 @@ class BinBuilder(object):
 
     @classmethod
     def add_five_bets(cls, wheel):
-        """Add five bet outcomes to bins 00, 0, 1, 2 and 3"""
+        """Add the Five Bet outcome to bins 00, 0, 1, 2 and 3."""
         for i in (0, 1, 2, 3, 37):
             wheel.add_outcome(i, Outcome(RoG.FIVE_BET_NAME, RoG.FIVE_BET_ODDS))
 
     @classmethod
     def add_straight_bets(cls, wheel):
+        """Add all Straight Bet outcomes to the corresponding bins."""
         for n in range(0, 37):
             wheel.add_outcome(n, Outcome(
                 '{} {}'.format(RoG.STRAIGHT_BET_NAME, n),
@@ -48,6 +47,7 @@ class BinBuilder(object):
 
     @classmethod
     def add_split_bets(cls, wheel):
+        """Add all Split Bet outcomes to the corresponding bins."""
         # add all {n, n + 1} outcomes
         for row in range(0, 12):
             cls.helper_add_split_bets(wheel, row * 3 + 1, 1)
@@ -59,6 +59,7 @@ class BinBuilder(object):
 
     @classmethod
     def helper_add_split_bets(cls, wheel, n_bin, inc):
+        """Helper function to add Split Bet outcomes."""
         oc = Outcome(
             '{} {}-{}'.format(RoG.SPLIT_BET_NAME, n_bin, n_bin + inc),
             RoG.SPLIT_BET_ODDS)
@@ -67,6 +68,7 @@ class BinBuilder(object):
 
     @classmethod
     def add_street_bets(cls, wheel):
+        """Add all Street Bet outcomes to the corresponding bins."""
         for row in range(0, 12):
             n = 3 * row + 1
             oc = Outcome(
@@ -78,6 +80,7 @@ class BinBuilder(object):
 
     @classmethod
     def add_corner_bets(cls, wheel):
+        """Add all Corner Bet outcomes to the corresponding bins."""
         for row in range(0, 11):
             for i in range(1, 3):
                 n = 3 * row + i
@@ -91,6 +94,7 @@ class BinBuilder(object):
 
     @classmethod
     def add_line_bets(cls, wheel):
+        """Add all Line Bet outcomes to the corresponding bins."""
         for row in range(0, 11):
             n = 3 * row + 1
             oc = Outcome(
@@ -104,6 +108,7 @@ class BinBuilder(object):
 
     @classmethod
     def add_dozen_bets(cls, wheel):
+        """Add all Dozen Bet outcomes to the corresponding bins."""
         for dozen in range(0, 3):
             oc = Outcome('{} {}'.format(RoG.DOZEN_BET_NAME, dozen + 1),
                          RoG.DOZEN_BET_ODDS)
@@ -113,6 +118,7 @@ class BinBuilder(object):
 
     @classmethod
     def add_column_bets(cls, wheel):
+        """Add all Column Bet outcomes to the corresponding bins."""
         for col in range(0, 3):
             oc = Outcome('{} {}'.format(RoG.COLUMN_BET_NAME, col + 1),
                          RoG.DOZEN_BET_ODDS)
@@ -122,6 +128,7 @@ class BinBuilder(object):
 
     @classmethod
     def add_even_money_bets(cls, wheel):
+        """Add all Even Money Bet outcomes to the corresponding bins."""
         red = Outcome(RoG.RED_BET_NAME, RoG.EVEN_MONEY_BET_ODDS)
         black = Outcome(RoG.BLACK_BET_NAME, RoG.EVEN_MONEY_BET_ODDS)
         even = Outcome(RoG.EVEN_BET_NAME, RoG.EVEN_MONEY_BET_ODDS)

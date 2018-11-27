@@ -1,8 +1,4 @@
-"""Package: casino.roulette
-Module: player
-
-Implements the Player class.
-"""
+"""Implements the Player class."""
 
 
 class Player(object):
@@ -16,6 +12,7 @@ class Player(object):
         - Outcome: player places bets on outcomes.
         - Table: used by player to place a bet on a specific outcome.
     """
+
     def __init__(self, table, wheel):
         """Create instance of Player.
 

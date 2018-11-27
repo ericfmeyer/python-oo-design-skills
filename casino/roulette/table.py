@@ -1,14 +1,12 @@
-"""Package: casino.roulette
-Module: table
-
-Implements the Table class.
-"""
+"""Implements the Table class."""
 
 
 class InvalidBet(Exception):
-    """InvalidBet is raised when the player attempts to place a bet which
-    exceeds the table's limit.
+    """Raised when the player attempts to place an invalid bet.
+
+    An invalid bet is a bet which exceeds the table's limit.
     """
+
     pass
 
 
@@ -33,6 +31,13 @@ class Table(object):
     TABLE_LIMIT = 300
 
     def __init__(self):
+        """Create an instance of a Table.
+
+        Class members:
+            - limit: the table limit.
+            - minimum: the minimum bet amount.
+            - bets: list of bets placed by players.
+        """
         self.limit = self.TABLE_LIMIT
         self.minimum = self.TABLE_MIN
         self.bets = list()
@@ -63,6 +68,10 @@ class Table(object):
         return 'Table( {} )'.format(', '.join(repr(bet) for bet in self.bets))
 
     def is_valid(self):
+        """Return true if all bets on the table are valid.
+
+        :return: True if all bets valid.
+        """
         total = 0
         for bet in self.bets:
             if bet.amount < self.minimum:

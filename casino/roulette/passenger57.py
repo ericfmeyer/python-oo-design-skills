@@ -1,7 +1,4 @@
-"""Package: casino.roulette
-Module: passenger57
-
-Implements the Passenger57 class.
+"""Implements the Passenger57 class.
 
 Stub player - always bets on black.
 """
@@ -17,6 +14,7 @@ class Passenger57(Player):
     Passenger57 gets the Black outcome from the Wheel,
     constructs a bet on that outcome, and places the bet.
     """
+
     def __init__(self, table, wheel):
         """Create instance of Passenger57 that always bets on Black.
 

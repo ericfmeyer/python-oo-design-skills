@@ -1,8 +1,4 @@
-"""Package: casino.roulette
-Module: wheel
-
-Implements the Wheel class.
-"""
+"""Implements the Wheel class."""
 
 from random import Random
 
@@ -39,7 +35,7 @@ class Wheel(object):
     def next(self):
         """Return a bin at random.
 
-        :return: (Bin) the winning bin
+        :return: (Bin) the winning bin.
         """
         return self.rng.choice(self.bins)
 
@@ -47,9 +43,14 @@ class Wheel(object):
         """Return the given Bin from the collection.
 
         :param n: (int) bin number - 0-37 inclusive.
-        :return: (Bin) the requested bin
+        :return: (Bin) the requested bin.
         """
         return self.bins[n]
 
     def get_outcome(self, name):
+        """Return an outcome based on the name.
+
+        :param name: (str) name of the outcome.
+        :return: (Outcome) the outcome associated to the name.
+        """
         return self.all_outcomes.get(name)

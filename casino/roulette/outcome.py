@@ -1,8 +1,4 @@
-"""Package: casino.roulette
-Module: outcome
-
-Implements the Outcome class.
-"""
+"""Implements the Outcome class."""
 
 
 class Outcome(object):
