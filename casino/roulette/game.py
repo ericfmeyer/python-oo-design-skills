@@ -1,8 +1,8 @@
 """Implements the RouletteGame class."""
 
 
-class RouletteGame(object):
-    """RouletteGame runs the roulette game.
+class Game(object):
+    """Game runs the roulette game.
 
     It gets bets from the player, spins the wheel, collects losing bets
     and pays winning bets.

@@ -4,7 +4,7 @@ Stub player - always bets on black.
 """
 
 from casino.roulette.bet import Bet
-from casino.roulette.game import RouletteGame as RoG
+from casino.roulette.game import Game
 from casino.roulette.player import Player
 
 
@@ -22,7 +22,7 @@ class Passenger57(Player):
         :param wheel: (Wheel) the wheel instance which defines all Outcomes.
         """
         super().__init__(table, wheel)
-        self.black = wheel.get_outcome(RoG.BLACK_BET_NAME)
+        self.black = wheel.get_outcome(Game.BLACK_BET_NAME)
 
     def place_bets(self):
         """Place a bet on Black outcome."""

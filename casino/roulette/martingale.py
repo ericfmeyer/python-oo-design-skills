@@ -1,7 +1,7 @@
 """Implements the Martingale class."""
 
 from casino.roulette.bet import Bet
-from casino.roulette.game import RouletteGame as RoG
+from casino.roulette.game import Game
 from casino.roulette.player import Player
 
 
@@ -21,7 +21,7 @@ class Martingale(Player):
         super().__init__(table, wheel)
         self.loss_count = 0
         self.bet_multiplier = 1
-        self.black_outcome = self.wheel.get_outcome(RoG.BLACK_BET_NAME)
+        self.black_outcome = self.wheel.get_outcome(Game.BLACK_BET_NAME)
 
     def place_bets(self):
         """Place bet on the table."""

@@ -3,7 +3,7 @@ import unittest
 from casino.roulette.bet import Bet
 from casino.roulette.binbuilder import BinBuilder
 from casino.roulette.martingale import Martingale
-from casino.roulette.game import RouletteGame as RoG
+from casino.roulette.game import Game
 from casino.roulette.table import Table
 from casino.roulette.wheel import Wheel
 
@@ -30,7 +30,7 @@ class MartingaleTest(unittest.TestCase):
         self.assertEqual(self.the_player.stake, -1)
 
     def test_martingale_player_stake_is_correct_after_a_loss(self):
-        the_bet = Bet(1, self.wheel.get_outcome(RoG.BLACK_BET_NAME))
+        the_bet = Bet(1, self.wheel.get_outcome(Game.BLACK_BET_NAME))
         self.assertEqual(self.the_player.stake, 0)
         self.the_player.place_bets()
         self.the_player.lose(the_bet)
@@ -38,7 +38,7 @@ class MartingaleTest(unittest.TestCase):
 
     def test_martingale_player_bet_multiplier_correctly_updates(self):
         amount = 1
-        the_bet = Bet(amount, self.wheel.get_outcome(RoG.BLACK_BET_NAME))
+        the_bet = Bet(amount, self.wheel.get_outcome(Game.BLACK_BET_NAME))
         self.the_player.lose(the_bet)
         self.assertEqual(self.the_player.bet_multiplier, 2)
         self.the_player.lose(the_bet)

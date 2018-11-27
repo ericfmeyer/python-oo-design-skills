@@ -1,7 +1,7 @@
 import unittest
 
 from casino.roulette.bet import Bet
-from casino.roulette.game import RouletteGame as RoG
+from casino.roulette.game import Game
 from casino.roulette.outcome import Outcome
 
 
@@ -9,10 +9,10 @@ class BetTest(unittest.TestCase):
     """Test the implementation of the class Bet."""
 
     def setUp(self):
-        self.black_bet = Bet(10, Outcome(RoG.BLACK_BET_NAME,
-                                         RoG.EVEN_MONEY_BET_ODDS))
+        self.black_bet = Bet(10, Outcome(Game.BLACK_BET_NAME,
+                                         Game.EVEN_MONEY_BET_ODDS))
         self.straight_bet = Bet(5, Outcome(
-            RoG.STRAIGHT_BET_NAME + ' 35', RoG.STRAIGHT_BET_ODDS)
+            Game.STRAIGHT_BET_NAME + ' 35', Game.STRAIGHT_BET_ODDS)
                                 )
 
     def test_can_create_bet(self):

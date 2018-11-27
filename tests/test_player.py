@@ -2,7 +2,7 @@ import unittest
 
 from casino.roulette.bet import Bet
 from casino.roulette.binbuilder import BinBuilder
-from casino.roulette.game import RouletteGame as RoG
+from casino.roulette.game import Game
 from casino.roulette.player import Player
 from casino.roulette.table import Table
 from casino.roulette.wheel import Wheel
@@ -22,7 +22,7 @@ class PlayerTest(unittest.TestCase):
 
     def test_player_updates_stake_with_a_win(self):
         bet_amount = 100
-        the_bet = Bet(bet_amount, self.wheel.get_outcome(RoG.ODD_BET_NAME))
+        the_bet = Bet(bet_amount, self.wheel.get_outcome(Game.ODD_BET_NAME))
         self.assertEqual(self.player.stake, 0)
         self.player.win(the_bet)
         self.assertEqual(self.player.stake, 200)
@@ -30,7 +30,7 @@ class PlayerTest(unittest.TestCase):
     def test_player_stake_does_not_change_with_a_loss(self):
         # amount has already been deducted when placing the bet
         bet_amount = 100
-        the_bet = Bet(bet_amount, self.wheel.get_outcome(RoG.ODD_BET_NAME))
+        the_bet = Bet(bet_amount, self.wheel.get_outcome(Game.ODD_BET_NAME))
         self.assertEqual(self.player.stake, 0)
         self.player.lose(the_bet)
         self.assertEqual(self.player.stake, 0)
