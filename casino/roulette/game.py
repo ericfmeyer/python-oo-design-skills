@@ -60,10 +60,11 @@ class RouletteGame(object):
         :param player: (Player) the individual Player that places bets,
                                 receives winnings and pays losses.
         """
-        player.place_bets()
-        winning_bin = self.wheel.next()
-        for bet in self.table:
-            if bet.outcome in winning_bin:
-                player.win(bet)
-            else:
-                player.lose(bet)
+        if player.playing():
+            player.place_bets()
+            winning_bin = self.wheel.next()
+            for bet in self.table:
+                if bet.outcome in winning_bin:
+                    player.win(bet)
+                else:
+                    player.lose(bet)
