@@ -17,8 +17,8 @@ class Bet(object):
     def __init__(self, amount, outcome):
         """Create a new bet of a specific amount on a specific outcome.
 
-        :param amount: the amount bet on the outcome.
-        :param outcome: the outcome being bet on.
+        :param amount: (int) the amount bet on the outcome.
+        :param outcome: (Outcome) the outcome being bet on.
         """
         # TODO: associate bet with a player
         self.amount = amount

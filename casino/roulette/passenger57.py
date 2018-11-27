@@ -8,9 +8,10 @@ Stub player - always bets on black.
 
 from casino.roulette.bet import Bet
 from casino.roulette.game import RouletteGame as RoG
+from casino.roulette.player import Player
 
 
-class Passenger57(object):
+class Passenger57(Player):
     """Passenger57 always bets on Black.
 
     Passenger57 gets the Black outcome from the Wheel,
@@ -22,23 +23,11 @@ class Passenger57(object):
         :param table: (Table) the table to place bets on.
         :param wheel: (Wheel) the wheel instance which defines all Outcomes.
         """
-        self.table = table
+        super().__init__(table, wheel)
         self.black = wheel.get_outcome(RoG.BLACK_BET_NAME)
 
     def place_bets(self):
         """Place a bet on Black outcome."""
-        self.table.place_bet(Bet(50, self.black))
-
-    def win(self, bet):
-        """Notification from the game about the bet that won.
-
-        :param bet: (Bet) the bet that won.
-        """
-        print("{} has won!".format(bet))
-
-    def lose(self, bet):
-        """Notification from the game about the bet that lost.
-
-        :param bet: (Bet) the bet that lost.
-        """
-        print("{} has lost!".format(bet))
+        amount = 50
+        self.stake -= amount
+        self.table.place_bet(Bet(amount, self.black))
