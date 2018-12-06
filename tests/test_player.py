@@ -35,6 +35,16 @@ class PlayerTest(unittest.TestCase):
         self.player.lose(the_bet)
         self.assertEqual(self.player.stake, 0)
 
+    def test_can_set_the_player_stake(self):
+        expected_stake = 10
+        self.player.set_stake(expected_stake)
+        self.assertEqual(self.player.stake, expected_stake)
+
+    def test_can_set_the_player_rounds(self):
+        expected_rounds = 6
+        self.player.set_rounds(expected_rounds)
+        self.assertEqual(self.player.rounds_to_go, expected_rounds)
+
 
 if __name__ == '__main__':
     unittest.main()

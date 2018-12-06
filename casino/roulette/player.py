@@ -49,3 +49,16 @@ class Player(object):
         """
         print("{} has lost!".format(bet))
 
+    def set_stake(self, value):
+        """Set the player's stake with the given value.
+
+        :param value: (int) the player's stake
+        """
+        self.stake = value
+
+    def set_rounds(self, value):
+        """Set the player's rounds to go with the given value.
+
+        :param value: (int) the player's duration
+        """
+        self.rounds_to_go = value
