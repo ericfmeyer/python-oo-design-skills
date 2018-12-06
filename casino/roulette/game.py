@@ -60,7 +60,7 @@ class Game(object):
         :param player: (Player) the individual Player that places bets,
                                 receives winnings and pays losses.
         """
-        if player.playing():
+        if player.is_playing():
             player.place_bets()
             winning_bin = self.wheel.next()
             for bet in self.table:
