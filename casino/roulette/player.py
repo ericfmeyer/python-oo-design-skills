@@ -23,12 +23,12 @@ class Player(object):
         self.table = table
         self.wheel = wheel
 
-    def playing(self):
+    def is_playing(self):
         """Return True if Player is still playing.
 
         :return: (bool) True if still playing.
         """
-        return True
+        return self.rounds_to_go > 0 and self.stake > 0
 
     def place_bets(self):
         """Update the Table with the various Bets."""

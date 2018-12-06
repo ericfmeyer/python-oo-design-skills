@@ -45,6 +45,21 @@ class PlayerTest(unittest.TestCase):
         self.player.set_rounds(expected_rounds)
         self.assertEqual(self.player.rounds_to_go, expected_rounds)
 
+    def test_player_is_playing_if_stake_and_rounds_not_zero(self):
+        self.player.set_rounds(1)
+        self.player.set_stake(1)
+        self.assertTrue(self.player.is_playing())
+
+    def test_player_stops_playing_if_rounds_reach_zero(self):
+        self.player.set_rounds(0)
+        self.player.set_stake(1)
+        self.assertFalse(self.player.is_playing())
+
+    def test_player_stops_playing_if_stake_reaches_zero(self):
+        self.player.set_rounds(1)
+        self.player.set_stake(0)
+        self.assertFalse(self.player.is_playing())
+
 
 if __name__ == '__main__':
     unittest.main()
