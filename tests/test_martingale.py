@@ -2,8 +2,8 @@ import unittest
 
 from casino.roulette.bet import Bet
 from casino.roulette.binbuilder import BinBuilder
-from casino.roulette.martingale import Martingale
 from casino.roulette.game import Game
+from casino.roulette.martingale import Martingale
 from casino.roulette.table import Table
 from casino.roulette.wheel import Wheel
 
