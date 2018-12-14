@@ -1,5 +1,5 @@
-from unittest.mock import Mock
 import unittest
+from unittest.mock import Mock
 
 from casino.roulette.bin import Bin
 from casino.roulette.binbuilder import BinBuilder
@@ -76,10 +76,14 @@ class WheelTest(unittest.TestCase):
             Outcome(Game.SPLIT_BET_NAME + " 20-21", Game.SPLIT_BET_ODDS),
             Outcome(Game.SPLIT_BET_NAME + " 20-23", Game.SPLIT_BET_ODDS),
             Outcome(Game.STREET_BET_NAME + " 19-20-21", Game.STREET_BET_ODDS),
-            Outcome(Game.CORNER_BET_NAME + " 16-17-19-20", Game.CORNER_BET_ODDS),
-            Outcome(Game.CORNER_BET_NAME + " 17-18-20-21", Game.CORNER_BET_ODDS),
-            Outcome(Game.CORNER_BET_NAME + " 19-20-22-23", Game.CORNER_BET_ODDS),
-            Outcome(Game.CORNER_BET_NAME + " 20-21-23-24", Game.CORNER_BET_ODDS),
+            Outcome(Game.CORNER_BET_NAME + " 16-17-19-20",
+                    Game.CORNER_BET_ODDS),
+            Outcome(Game.CORNER_BET_NAME + " 17-18-20-21",
+                    Game.CORNER_BET_ODDS),
+            Outcome(Game.CORNER_BET_NAME + " 19-20-22-23",
+                    Game.CORNER_BET_ODDS),
+            Outcome(Game.CORNER_BET_NAME + " 20-21-23-24",
+                    Game.CORNER_BET_ODDS),
             Outcome(Game.LINE_BET_NAME + " 16-17-18-19-20-21",
                     Game.LINE_BET_ODDS),
             Outcome(Game.LINE_BET_NAME + " 19-20-21-22-23-24",

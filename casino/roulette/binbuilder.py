@@ -30,7 +30,9 @@ class BinBuilder(object):
     def add_five_bets(cls, wheel):
         """Add the Five Bet outcome to bins 00, 0, 1, 2 and 3."""
         for i in (0, 1, 2, 3, 37):
-            wheel.add_outcome(i, Outcome(Game.FIVE_BET_NAME, Game.FIVE_BET_ODDS))
+            wheel.add_outcome(
+                i, Outcome(Game.FIVE_BET_NAME, Game.FIVE_BET_ODDS)
+            )
 
     @classmethod
     def add_straight_bets(cls, wheel):
@@ -98,9 +100,9 @@ class BinBuilder(object):
         for row in range(0, 11):
             n = 3 * row + 1
             oc = Outcome(
-                '{:s} {:d}-{:d}-{:d}-{:d}-{:d}-{:d}'
-                    .format(Game.LINE_BET_NAME,
-                            n, n + 1, n + 2, n + 3, n + 4, n + 5),
+                '{:s} {:d}-{:d}-{:d}-{:d}-{:d}-{:d}'.format(
+                    Game.LINE_BET_NAME, n, n + 1, n + 2, n + 3, n + 4, n + 5
+                ),
                 Game.LINE_BET_ODDS
             )
             for i in range(0, 6):
