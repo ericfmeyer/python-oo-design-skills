@@ -68,3 +68,5 @@ class Game(object):
                     player.win(bet)
                 else:
                     player.lose(bet)
+
+        self.table.clear_bets()

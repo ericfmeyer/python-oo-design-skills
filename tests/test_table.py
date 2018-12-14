@@ -20,12 +20,12 @@ class TableTest(unittest.TestCase):
 
     def test_place_bet_adds_bet_to_table(self):
         self.table.place_bet(self.bet_split)
-        self.assertEqual(1, len(self.table.bets))
+        self.assertEqual(len(self.table.bets), 1)
 
     def test_place_bet_can_add_same_bet(self):
         self.table.place_bet(self.bet_split)
         self.table.place_bet(self.bet_split)
-        self.assertEqual(2, len(self.table.bets))
+        self.assertEqual(len(self.table.bets), 2)
         for elem in self.table:
             self.assertEqual(self.bet_split, elem)
 
@@ -63,6 +63,11 @@ class TableTest(unittest.TestCase):
         self.table.place_bet(self.bet_red)
         expected = "Table( Bet(10, Split 1-2 (17:1)), Bet(25, Red (1:1)) )"
         self.assertEqual(expected, repr(self.table))
+
+    def test_clear_bets_remove_all_bets_from_table(self):
+        self.table.place_bet(self.bet_red)
+        self.table.clear_bets()
+        self.assertEqual(len(self.table.bets), 0)
 
 
 class TableIsValidTest(unittest.TestCase):

@@ -60,6 +60,11 @@ class PlayerTest(unittest.TestCase):
         self.player.set_stake(0)
         self.assertFalse(self.player.is_playing())
 
+    def test_after_player_places_bets_rounds_to_go_decreases(self):
+        self.assertEqual(self.player.rounds_to_go, 0)
+        self.player.place_bets()
+        self.assertEqual(self.player.rounds_to_go, -1)
+
 
 if __name__ == '__main__':
     unittest.main()

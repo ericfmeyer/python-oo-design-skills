@@ -21,6 +21,8 @@ class GameTest(unittest.TestCase):
         self.assertIsNotNone(self.game)
 
     def test_one_cycle(self):
+        self.player.set_rounds(3)
+        self.player.set_stake(100)
         for i in range(3):
             self.game.cycle(self.player)
 

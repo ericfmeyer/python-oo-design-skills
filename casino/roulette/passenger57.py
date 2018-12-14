@@ -26,6 +26,7 @@ class Passenger57(Player):
 
     def place_bets(self):
         """Place a bet on Black outcome."""
+        super().place_bets()
         amount = 50
         self.stake -= amount
         self.table.place_bet(Bet(amount, self.black))

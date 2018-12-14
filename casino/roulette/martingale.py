@@ -25,6 +25,7 @@ class Martingale(Player):
 
     def place_bets(self):
         """Place bet on the table."""
+        super().place_bets()
         self.stake -= self.bet_multiplier
         self.table.place_bet(Bet(self.bet_multiplier, self.black_outcome))
 

@@ -49,6 +49,10 @@ class Table(object):
         """
         self.bets.append(bet)
 
+    def clear_bets(self):
+        """Remove all bets from the table."""
+        self.bets.clear()
+
     def __iter__(self):
         """Return an iterator over the available list of bets."""
         return self.bets[:].__iter__()

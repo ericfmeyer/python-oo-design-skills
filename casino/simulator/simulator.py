@@ -52,3 +52,11 @@ class Simulator(object):
             self.game.cycle(self.player)
             stake_values.append(self.player.stake)
         return stake_values
+
+    def gather(self):
+        for n in range(self.samples):
+            print("Round #{}".format(n))
+            session_result = self.session()
+            self.maxima.append(max(session_result))
+            self.durations.append(len(session_result))
+

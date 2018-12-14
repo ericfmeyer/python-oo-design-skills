@@ -32,7 +32,7 @@ class Player(object):
 
     def place_bets(self):
         """Update the Table with the various Bets."""
-        pass
+        self.rounds_to_go -= 1
 
     def win(self, bet):
         """Notification from the game that the given bet was a winner.
