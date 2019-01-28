@@ -62,3 +62,6 @@ class Player(object):
         :param value: (int) the player's duration
         """
         self.rounds_to_go = value
+
+    def winners(self, set_of_outcomes):
+        pass

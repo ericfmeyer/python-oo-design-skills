@@ -46,11 +46,6 @@ class MartingaleTest(unittest.TestCase):
         self.the_player.win(the_bet)
         self.assertEqual(self.the_player.bet_multiplier, 1)
 
-    def test_after_martingale_player_places_bets_rounds_to_go_decreases(self):
-        self.assertEqual(self.the_player.rounds_to_go, 0)
-        self.the_player.place_bets()
-        self.assertEqual(self.the_player.rounds_to_go, -1)
-
 
 if __name__ == '__main__':
     unittest.main()

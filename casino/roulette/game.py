@@ -63,6 +63,7 @@ class Game(object):
         if player.is_playing():
             player.place_bets()
             winning_bin = self.wheel.next()
+            player.winners(set(winning_bin))
             for bet in self.table:
                 if bet.outcome in winning_bin:
                     player.win(bet)
