@@ -43,7 +43,7 @@ class Simulator(object):
         self.player = player
         self.game = game
 
-    def session(self) -> list:
+    def session(self):
         self.player.set_stake(self.init_stake)
         self.player.set_rounds(self.init_duration)
 
