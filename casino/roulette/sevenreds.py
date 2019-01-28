@@ -31,6 +31,7 @@ class SevenReds(Martingale):
         :param set_of_outcomes: (set of Outcomes)
         """
         if self.wheel.get_outcome(Game.RED_BET_NAME) in set_of_outcomes:
-            self.reds_to_go -= 1
+            if self.reds_to_go > 0:
+                self.reds_to_go -= 1
         else:
             self.reds_to_go = 7

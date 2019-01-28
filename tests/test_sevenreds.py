@@ -28,6 +28,11 @@ class SevenRedsTest(unittest.TestCase):
         self.the_player.winners({self.wheel.get_outcome(Game.BLACK_BET_NAME)})
         self.assertEqual(self.the_player.reds_to_go, 7)
 
+    def test_sevenreds_verify_reds_to_go_minimum(self):
+        for _ in range(8):
+            self.the_player.winners({self.wheel.get_outcome(Game.RED_BET_NAME)})
+        self.assertEqual(self.the_player.reds_to_go, 0)
+
     def test_sevenreds_player_does_not_place_bets_given_no_seven_reds(self):
         for _ in range(6):
             self.the_player.winners({self.wheel.get_outcome(Game.RED_BET_NAME)})
