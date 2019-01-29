@@ -36,8 +36,6 @@ class SimulatorTest(unittest.TestCase):
         self.test_simulator.gather()
         self.assertTrue(self.test_simulator.durations)
         self.assertTrue(self.test_simulator.maxima)
-        print(self.test_simulator.durations)
-        print(self.test_simulator.maxima)
 
     def test_simulator_returns_correct_results_given_non_random_spins(self):
         expected_durations = [52, 2, 2, 4, 24, 2, 6, 4, 98, 4, 250, 4, 12, 38,

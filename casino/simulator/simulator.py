@@ -1,5 +1,7 @@
 """Implements the Simulator class."""
 
+from casino.simulator.integerstatistics import IntegerStatistics
+
 
 class Simulator(object):
     """The Simulator class will simulate playing strategies.
@@ -37,8 +39,8 @@ class Simulator(object):
         self.init_stake = 100
         self.samples = 50
 
-        self.durations = list()
-        self.maxima = list()
+        self.durations = IntegerStatistics()
+        self.maxima = IntegerStatistics()
 
         self.player = player
         self.game = game
@@ -65,4 +67,14 @@ class Simulator(object):
             session_result = self.session()
             self.maxima.append(max(session_result))
             self.durations.append(len(session_result))
+        print('-' * 20)
+        print("Max stake values.")
+        print("Raw values: {}".format(self.maxima))
+        print("Mean: {}".format(self.maxima.mean()))
+        print("Std. Dev.: {}".format(self.maxima.stdev()))
+
+        print("Durations.")
+        print("Raw values: {}".format(self.durations))
+        print("Mean: {}".format(self.durations.mean()))
+        print("Std. Dev.: {}".format(self.durations.stdev()))
 

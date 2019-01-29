@@ -5,4 +5,5 @@ and output statistics on the results.
 
 Modules:
     - simulator
+    - integerstatistics
 """
