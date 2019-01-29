@@ -44,6 +44,7 @@ class Simulator(object):
         self.game = game
 
     def session(self):
+        """Return the list of the player's stake values from a game session."""
         self.player.set_stake(self.init_stake)
         self.player.set_rounds(self.init_duration)
 
@@ -54,6 +55,11 @@ class Simulator(object):
         return stake_values
 
     def gather(self):
+        """Run through all the samples of the simulation.
+
+        It gathers the maximum and the length of the stake values of each
+        player's session.
+        """
         for n in range(self.samples):
             print("Round #{}".format(n))
             session_result = self.session()

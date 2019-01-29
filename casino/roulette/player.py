@@ -64,4 +64,5 @@ class Player(object):
         self.rounds_to_go = value
 
     def winners(self, set_of_outcomes):
+        """Notification from the game about the winning Outcomes."""
         pass

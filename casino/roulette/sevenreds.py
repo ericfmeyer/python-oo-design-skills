@@ -20,6 +20,7 @@ class SevenReds(Martingale):
         self.reds_to_go = 7
 
     def place_bets(self):
+        """Place a bet if there has been at least 7 reds in a row."""
         if self.reds_to_go == 0:
             super().place_bets()
 
