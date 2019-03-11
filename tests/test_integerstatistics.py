@@ -16,8 +16,8 @@ class IntegerStatisticsTest(unittest.TestCase):
         self.assertEqual(self.test_data.mean(), 9)
 
     def test_standard_deviation_is_correct(self):
-        self.assertEqual(self.test_small_data.stdev(), 1)
-        self.assertEqual(self.test_data.stdev(), 3.31662)
+        self.assertEqual(self.test_small_data.stddev(), 1)
+        self.assertEqual(self.test_data.stddev(), 3.31662)
 
 
 if __name__ == '__main__':

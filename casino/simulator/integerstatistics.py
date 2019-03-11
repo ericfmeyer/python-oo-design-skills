@@ -10,7 +10,7 @@ class IntegerStatistics(list):
         """Return the mean of the list of values."""
         return sum(self) / len(self)
 
-    def stdev(self):
+    def stddev(self):
         """Return the standard deviation of the list of values.
 
         The value returned has 5 decimal digits.
