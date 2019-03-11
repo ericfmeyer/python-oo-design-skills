@@ -42,15 +42,27 @@ class SimulatorTest(unittest.TestCase):
                               6, 84, 2, 250, 12, 2, 150, 6, 8, 2, 8, 2, 4, 28,
                               2, 20, 6, 20, 6, 2, 26, 82, 2, 2, 4, 2, 2, 14, 38,
                               2, 14, 12, 4, 10, 2, 10]
+        exp_mean_durations = 26.96
+        exp_stddev_durations = 54.29961
         expected_maxima = [300, 50, 50, 100, 200, 50, 200, 100, 650, 150, 800,
                            100, 150, 300, 150, 500, 50, 1200, 200, 50, 800, 100,
                            150, 50, 250, 50, 100, 300, 50, 250, 150, 200, 100,
                            50, 250, 450, 50, 50, 100, 50, 50, 250, 400, 50, 200,
                            200, 150, 150, 50, 200]
+        exp_mean_maxima = 212.0
+        exp_stddev_maxima = 229.14214
         self.wheel.rng.seed(1)
         self.test_simulator.gather()
         self.assertEqual(self.test_simulator.durations, expected_durations)
+        self.assertEqual(self.test_simulator.durations.mean(),
+                         exp_mean_durations)
+        self.assertEqual(self.test_simulator.durations.stddev(),
+                         exp_stddev_durations)
         self.assertEqual(self.test_simulator.maxima, expected_maxima)
+        self.assertEqual(self.test_simulator.maxima.mean(),
+                         exp_mean_maxima)
+        self.assertEqual(self.test_simulator.maxima.stddev(),
+                         exp_stddev_maxima)
 
 
 if __name__ == '__main__':
