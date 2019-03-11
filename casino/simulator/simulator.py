@@ -71,10 +71,10 @@ class Simulator(object):
         print("Max stake values.")
         print("Raw values: {}".format(self.maxima))
         print("Mean: {}".format(self.maxima.mean()))
-        print("Std. Dev.: {}".format(self.maxima.stdev()))
+        print("Std. Dev.: {}".format(self.maxima.stddev()))
 
         print("Durations.")
         print("Raw values: {}".format(self.durations))
         print("Mean: {}".format(self.durations.mean()))
-        print("Std. Dev.: {}".format(self.durations.stdev()))
+        print("Std. Dev.: {}".format(self.durations.stddev()))
 
